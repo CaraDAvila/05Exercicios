@@ -16,22 +16,17 @@ public class MonitorEnergia {
     }
 
     public double mediaEnergia() {
-        double media = 0;
-
-        for (int i = 0; i < indice; i++) {
-            media += consumoDiario[i];
-        }
-        return media / indice;
+        return mediaEnergia(1, indice);
     }
 
 
     public double mediaEnergia(int i, int f) {
         double media = 0;
 
-        for (int j = i-1; j < f; j++) {
+        for (int j = i - 1; j < f; j++) {
             media += consumoDiario[j];
         }
-        return media / (f-i+1);
+        return media / (f - i + 1);
     }
 
 }
