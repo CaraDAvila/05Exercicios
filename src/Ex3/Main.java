@@ -1,5 +1,6 @@
 package Ex3;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -12,28 +13,27 @@ public class Main {
         int opcao;
 
         do {
-            System.out.println("--------MENU--------");
+            System.out.println("\n--------MENU--------");
             System.out.println("1- cadastrar bilhete");
             System.out.println("2- carregar bilhete");
             System.out.println("3- consultar saldo");
             System.out.println("4- passar na catraca");
             System.out.println("5- FINALIZAR");
-            System.out.println("--------------------");
+            System.out.println("--------------------\n");
 
-            System.out.printf(" ");
             opcao = inp.nextInt();
 
             switch (opcao) {
                 case 1 -> cadastrar();
-//                case 2 ->
-//                case 3 ->
-//                case 4 ->
+                case 2 -> carregar();
+                case 3 -> consultarSaldo();
+                case 4 -> passarNaCatraca();
                 case 5 -> System.out.println("[Programa finalizado]");
                 default -> System.out.println("[(?) opcão invalida, tente novamente]");
             }
-
         } while (opcao != 5);
     }
+
 
     private static void cadastrar() {
         String nome;
@@ -42,7 +42,7 @@ public class Main {
 
         if (n < bilhete.length) {
             System.out.print("nome do usuario: ");
-            nome = inp.nextLine();
+            nome = inp.next();
             System.out.print("cpf do usuario: ");
             cpf = inp.nextLong();
             System.out.print("tipo de tarifa (estudante - professor - comum): ");
@@ -52,11 +52,11 @@ public class Main {
 
             n++;
         } else {
-            System.out.println("[ERRO]Procure um posto de atendimento");
+            System.out.println("[(!)Procure um posto de atendimento]");
         }
     }
 
-    public BilheteUnico pesquisar() {
+    public static BilheteUnico pesquisar() {
         long cpf;
         System.out.print("CPF para pesquisar: ");
         cpf = inp.nextLong();
@@ -70,4 +70,45 @@ public class Main {
         System.out.printf("CPF não enccontrado, tente novamente.");
         return null;
     }
+
+    private static void carregar() {
+        double valor;
+
+        BilheteUnico bilheteUnico = pesquisar();
+
+        if (bilheteUnico != null) {
+            System.out.println("Valor a ser carregado: ");
+            valor = inp.nextDouble();
+
+            bilheteUnico.carregar(valor);
+        }
+
+
+    }
+
+    private static void consultarSaldo() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        BilheteUnico bilheteUnico = pesquisar();
+
+        if (bilheteUnico != null) {
+            System.out.println("Saldo:  " + df.format(bilheteUnico.saldo));
+        }
+
+    }
+
+    private static void passarNaCatraca() {
+        DecimalFormat df = new DecimalFormat("0.00");
+
+        BilheteUnico bilheteUnico = pesquisar();
+
+        if (bilheteUnico != null) {
+            if (!bilheteUnico.passarNaCatraca()) {
+                System.out.println("[(!)Saldo insuficiente]");
+
+            }
+            System.out.println("Saldo atual:    R$" + df.format(bilheteUnico.saldo));
+        }
+
+    }
+
 }

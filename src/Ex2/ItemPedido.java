@@ -5,7 +5,7 @@ public class ItemPedido {
     double precoUnitario;
     int quantidade;
 
-    public void IniciarAtributos() {
+    public void IniciarItem() {
         //inicializa atributos do objeto calcula subtotal do item
     }
 }
