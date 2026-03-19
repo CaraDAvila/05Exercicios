@@ -28,8 +28,11 @@ public class BilheteUnico {
 
     public double calcularTarifa() {
         double valor = tarifaBase;
-        if (usuario.tipoTarifa.equalsIgnoreCase("estudante") || usuario.tipoTarifa.equalsIgnoreCase("professor")) {
+        if (usuario.tipoTarifa.equalsIgnoreCase("comum")) {
+            valor = tarifaBase;
+        } else {
             valor = tarifaBase / 2;
+
         }
         return valor;
     }
