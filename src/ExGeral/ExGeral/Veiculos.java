@@ -8,6 +8,7 @@ public class Veiculos {
 
 
     public void entradaVeiculo(String placa){
+        if (v)
 
     }
 
