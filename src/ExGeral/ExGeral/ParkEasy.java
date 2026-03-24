@@ -3,12 +3,17 @@ package ExGeral.ExGeral;
 import java.util.Scanner;
 
 public class ParkEasy {
+
+    static Scanner inp = new Scanner(System.in);
+    static Veiculos[] veiculos = new Veiculos[10];
+    static int nVeiculo;
+
     public static void main(String[] args) {
 
-        Scanner inp = new Scanner(System.in);
 
         int opcao;
 
+        // ps: breaking lines work, """ """
         do {
             System.out.println("#### Estacionamento ParkEasy ####");
             System.out.println("[1]Entrada de veículo");

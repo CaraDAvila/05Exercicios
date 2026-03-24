@@ -4,15 +4,22 @@ public class Veiculos {
     String marca;
     String modelo;
     String placa;
-    String proprietario;
+    Proprietario proprietario;
 
 
-    public void entradaVeiculo(String placa){
-        if (v)
+    public Veiculos(String marca, String modelo, String placa, Proprietario proprietario) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.placa = placa;
+        this.proprietario = proprietario;
+    }
+
+    public void entradaVeiculo(String placa) {
+
 
     }
 
-    public  void saidaVeiculo(String placa){
+    public void saidaVeiculo(String placa) {
         String horaSai;
 
     }
